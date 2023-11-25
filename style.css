@@ -1,0 +1,29 @@
+.dark-tile{
+    background-color: rgb(125, 192, 26);
+    height: 50px;
+    width: 50px;
+}
+.light-tile{
+    background-color: rgb(161, 242, 39);
+    height: 50px;
+    width: 50px;
+}
+.player{
+    background-color: rgb(39, 69, 242);
+    height: 46px;
+    width: 46px;
+    border: 2px solid rgb(4, 32, 40);
+}
+#map{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 350px;
+    border: 2px solid rgb(13, 56, 68);
+}
+.container{
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+}

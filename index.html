@@ -4,42 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Movement</title>
-    <style>
-        #game-map{
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 490px;
-            max-height: 490px;
-            /* display: grid;
-            grid-template-columns: 9fr;
-            grid-template-rows: 1fr; */
-        }
-        .square{
-            height: 50px;
-            width: 50px;
-            border: 1px solid rgb(19, 51, 68);
-        }
-        .evenSquare{
-            background-color: rgb(128, 255, 212);
-        }
-        .oddSquare{
-            background-color: rgb(125, 192, 170);
-        }
-        .playerSquare{
-            height: 50px;
-            width: 50px;
-            background-color: rgb(158, 41, 184);
-            border: 1px solid rgb(19, 51, 68);
-        }
-        body{
-            background-color: antiquewhite;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+        
 </head>
-<body>
-<div id="game-map">
+<body onload="draw()">
+    <div class="container">
+        <div id="map">
 
-</div>
-<script src="game.js"></script>
+        </div>
+        <button id="add-player">Add Player</button>
+    </div>
+    
+<script src="main.js"></script>
 </body>
 </html>
