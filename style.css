@@ -17,7 +17,7 @@
 #map{
     display: flex;
     flex-wrap: wrap;
-    max-width: 350px;
+    max-width: 450px;
     border: 2px solid rgb(13, 56, 68);
 }
 .container{
