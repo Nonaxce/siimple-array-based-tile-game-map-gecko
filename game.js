@@ -142,6 +142,7 @@ document.addEventListener('keypress', function(e){
     }
 });
 
+draw();
 // you have reached the end!
 
 
