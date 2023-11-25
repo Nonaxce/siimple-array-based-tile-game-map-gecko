@@ -72,53 +72,59 @@ let playerPos = {
     "y": null
 }
 // adds the player at a specified point 
+let player = false;
 function addPlayer(y, x) {
     newMap[y][x] = "1 ";
     playerPos.x = x;
     playerPos.y = y;
     draw();
     render();
+    player = true;
 }
 // determines the direction of the 
 function movePlayer(direction) {
     // changes previous postion to "0 " or an occupied space
-    newMap[playerPos.y][playerPos.x] = "0 "
-    switch(direction) {
-        case "up":
-            // the if statement is for checking if the "player" will go off the array
-            // in this world, its flat
-            if (!(playerPos.y == 0)) {
-                playerPos.y -= 1;
-            } else {console.log("nope");}
-            break;
-        case "right":
-            if (!(playerPos.x == lenCol-1)) {
-                playerPos.x += 1;
-            } else {console.log("nope");}
-            break;
-        case "down":
-            if (!(playerPos.y == lenRow-1)) {
-                playerPos.y += 1;
-            } else {console.log("nope");}
-            break;
-        case "left":
-            if (!(playerPos.x == 0)) {
-                playerPos.x -= 1;
-            } else {console.log("nope");}
-            break;
-        default:
-            alert(
-            `And there he goes! Look a giant turtle! 
-            (iT bROKE AGAIn!)
-            
-            yayyy
-            `
-            );
+    if (player) {
+       newMap[playerPos.y][playerPos.x] = "0 "
+        switch(direction) {
+            case "up":
+                // the if statement is for checking if the "player" will go off the array
+                // in this world, its flat
+                if (!(playerPos.y == 0)) {
+                    playerPos.y -= 1;
+                } else {console.log("nope");}
+                break;
+            case "right":
+                if (!(playerPos.x == lenCol-1)) {
+                    playerPos.x += 1;
+                } else {console.log("nope");}
+                break;
+            case "down":
+                if (!(playerPos.y == lenRow-1)) {
+                    playerPos.y += 1;
+                } else {console.log("nope");}
+                break;
+            case "left":
+                if (!(playerPos.x == 0)) {
+                    playerPos.x -= 1;
+                } else {console.log("nope");}
+                break;
+            default:
+                alert(
+                `And there he goes! Look a giant turtle! 
+                (iT bROKE AGAIn!)
+                
+                yayyy
+                `
+                );
+        }
+        // to place the player in the new position
+        newMap[playerPos.y][playerPos.x] = "1 "
+        draw();
+        //render(); 
+    } else {
+        console.log("not working aren't we");
     }
-    // to place the player in the new position
-    newMap[playerPos.y][playerPos.x] = "1 "
-    draw();
-    render();
 }
 
 // render to dom

@@ -27,3 +27,11 @@
     align-items: center;
     height: 100vh;
 }
+body{
+    background-color: rgb(214, 194, 168);
+}
+button{
+    height: 2rem;
+    padding: 0 0.7rem;
+    font-size: 18px;
+}
