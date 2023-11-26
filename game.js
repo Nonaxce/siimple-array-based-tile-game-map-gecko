@@ -10,14 +10,14 @@ const addBombBtn = document.getElementById("add-explosive");
 let map = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 3, 0, 3, 3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0],
+    [0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -52,6 +52,18 @@ function draw() {
                 bombElem.classList.add("bomb");
                 bombElem.setAttribute('title', 'me bomb');
                 map1.appendChild(bombElem);
+            } else if (newMap[row][col] === 3) {
+                // creates a wall
+                let wallElem = document.createElement("div");
+                wallElem.classList.add("wall");
+                wallElem.setAttribute('title', 'inanimate object');
+                map1.appendChild(wallElem);
+            } else if (newMap[row][col] === 4) {
+                // creates a wall
+                let voidElem = document.createElement("div");
+                voidElem.classList.add("void");
+                voidElem.setAttribute('title', 'X6$t(jhsQ2&8*)9</`=SyvX@-');
+                map1.appendChild(voidElem);
             } else {
                 // creates a checkered pattern (of course it gonna look good)
                 if (row%2 == 0) {
@@ -78,7 +90,7 @@ function draw() {
 // console.logs the array (basically for debugging purposes only)
 function render() {console.log(newMap);}
 
-// removes all child elements 
+// removes all child elements (!IMPORTANT)
 function removeAllChildren() {
     while(map1.firstChild) {
         // deletes all references to child element to optimize memory
@@ -94,12 +106,17 @@ let playerPos = {
 // adds the player at a specified point 
 let player = false;
 function addPlayer(y, x) {
-    newMap[y][x] = 1;
-    playerPos.x = x;
-    playerPos.y = y;
-    draw();
-    render();
-    player = true;
+    if (!player) {
+        newMap[y][x] = 1;
+        playerPos.x = x;
+        playerPos.y = y;
+        draw();
+        player = true;
+    }
+}
+function removePlayer() {
+    newMap[playerPos.y][playerPos.x] = 0;
+    player = false;
 }
 // determines the direction of the 
 function movePlayer(direction) {
@@ -110,24 +127,24 @@ function movePlayer(direction) {
             case "up":
                 // the if statement is for checking if the "player" will go off the array
                 // in this world, its flat
-                if (!(playerPos.y == 0)) {
+                if (!(playerPos.y == 0) && !(newMap[playerPos.y-1][playerPos.x] === 3)) {
                     playerPos.y -= 1;
-                } else {console.log("nope");}
+                }
                 break;
             case "right":
-                if (!(playerPos.x == lenCol-1)) {
+                if (!(playerPos.x == lenCol-1) && !(newMap[playerPos.y][playerPos.x+1] === 3)) {
                     playerPos.x += 1;
-                } else {console.log("nope");}
+                }
                 break;
             case "down":
-                if (!(playerPos.y == lenRow-1)) {
+                if (!(playerPos.y == lenRow-1) && !(newMap[playerPos.y+1][playerPos.x] === 3)) {
                     playerPos.y += 1;
-                } else {console.log("nope");}
+                } 
                 break;
             case "left":
-                if (!(playerPos.x == 0)) {
+                if (!(playerPos.x == 0) && !(newMap[playerPos.y][playerPos.x-1] === 3)) {
                     playerPos.x -= 1;
-                } else {console.log("nope");}
+                }
                 break;
             default:
                 alert(
@@ -157,12 +174,12 @@ function addBombs() {
     newMap[0][getRandomInt(0, lenCol)] = 2;
     console.log("Bomb dropped");
 }
-addBombs();
 
 // render to dom
 
 addPlayerBtn.addEventListener('click', () => {
     addPlayer(1, 2);
+    
 });
 
 addBombBtn.addEventListener('click', () => {
