@@ -1,31 +1,38 @@
+:root {
+    --height: 50px;
+    --width: 50px;
+    --entityLength: 46px;
+}
+
 .dark-tile{
     background-color: rgb(125, 192, 26);
-    height: 50px;
-    width: 50px;
+    height: var(--height);
+    width: var(--width);
 }
 .light-tile{
     background-color: rgb(161, 242, 39);
-    height: 50px;
-    width: 50px;
+    height: var(--height);
+    width: var(--width);
 }
 .player{
     background-color: rgb(39, 69, 242);
-    height: 46px;
-    width: 46px;
+    height: var(--entityLength);
+    width: var(--entityLength);
     border: 2px solid rgb(4, 32, 40);
     transform: rotate(1deg);
 }
 .bomb{
     background-color: rgb(242, 39, 154);
-    height: 46px;
-    width: 46px;
+    height: var(--entityLength);
+    width: var(--entityLength);
     border: 2px solid rgb(39, 4, 40);
     border-radius: 50%;
 }
 #map{
     display: flex;
     flex-wrap: wrap;
-    max-width: 850px;
+    max-width: 650px;
+    min-width: 650px;
     border: 2px solid rgb(13, 56, 68);
     box-shadow: 0px 2px 20px rgb(233, 233, 237, 0.300);
 }
