@@ -25,8 +25,9 @@
 #map{
     display: flex;
     flex-wrap: wrap;
-    max-width: 600px;
+    max-width: 850px;
     border: 2px solid rgb(13, 56, 68);
+    box-shadow: 0px 2px 20px rgb(233, 233, 237, 0.300);
 }
 .container{
     display: grid;
