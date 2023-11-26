@@ -13,11 +13,19 @@
     height: 46px;
     width: 46px;
     border: 2px solid rgb(4, 32, 40);
+    transform: rotate(1deg);
+}
+.bomb{
+    background-color: rgb(242, 39, 154);
+    height: 46px;
+    width: 46px;
+    border: 2px solid rgb(39, 4, 40);
+    border-radius: 50%;
 }
 #map{
     display: flex;
     flex-wrap: wrap;
-    max-width: 450px;
+    max-width: 600px;
     border: 2px solid rgb(13, 56, 68);
 }
 .container{
@@ -28,7 +36,8 @@
     height: 100vh;
 }
 body{
-    background-color: rgb(214, 194, 168);
+    background-color: rgb(17, 17, 65);
+    color: rgb(180, 191, 210);
 }
 button{
     height: 2rem;
