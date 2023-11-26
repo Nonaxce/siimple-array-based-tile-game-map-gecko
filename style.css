@@ -6,12 +6,12 @@
 }
 
 .dark-tile{
-    background-color: rgb(125, 192, 26);
+    background-color: rgb(12, 13, 12);
     height: var(--height);
     width: var(--width);
 }
 .light-tile{
-    background-color: rgb(161, 242, 39);
+    background-color: rgb(0, 0, 0);
     height: var(--height);
     width: var(--width);
 }
@@ -29,10 +29,15 @@
     border: 2px solid rgb(18, 20, 17);
 }
 .void{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(50, 42, 52);
     height: var(--entityLength);
     width: var(--entityLength);
     border: 2px solid rgb(23, 1, 23)
+}
+.lava{
+    background-color: rgb(233, 143, 9);
+    height: var(--height);
+    width: var(--width);
 }
 .bomb{
     background-color: rgb(242, 39, 154);
@@ -40,6 +45,14 @@
     width: var(--entityLength);
     border: 2px solid rgb(39, 4, 40);
     border-radius: 50%;
+}
+/* ATRIBUTES */
+.scorched-player{
+    background-color: rgb(30, 31, 34);
+    height: var(--entityLength);
+    width: var(--entityLength);
+    border: 2px solid rgb(67, 50, 7);
+    transform: rotate(1deg);
 }
 #map{
     display: flex;
@@ -59,9 +72,15 @@
 body{
     background-color: rgb(17, 17, 65);
     color: rgb(180, 191, 210);
+    font-family: 'Courier New', Courier, monospace;
 }
 button{
     height: 2rem;
     padding: 0 0.7rem;
     font-size: 18px;
+    margin:2px 0;
+}
+sub{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
 }

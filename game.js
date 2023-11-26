@@ -18,9 +18,9 @@ let map = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5]
 ];
 
 // cloned array prevents original from changing
@@ -64,6 +64,12 @@ function draw() {
                 voidElem.classList.add("void");
                 voidElem.setAttribute('title', 'X6$t(jhsQ2&8*)9</`=SyvX@-');
                 map1.appendChild(voidElem);
+            } else if (newMap[row][col] === 5) {
+                // creates a wall
+                let lavaElem = document.createElement("div");
+                lavaElem.classList.add("lava");
+                lavaElem.setAttribute('title', 'hot stuff');
+                map1.appendChild(lavaElem);
             } else {
                 // creates a checkered pattern (of course it gonna look good)
                 if (row%2 == 0) {
@@ -117,6 +123,11 @@ function addPlayer(y, x) {
 function removePlayer() {
     newMap[playerPos.y][playerPos.x] = 0;
     player = false;
+}
+function burnPlayer() {
+    if (newMap[playerPos.y][playerPos.x] == 4) {
+        playerElem.classList.add("scorched player");
+    }
 }
 // determines the direction of the 
 function movePlayer(direction) {
