@@ -200,19 +200,17 @@ addBombBtn.addEventListener('click', () => {
 
 // handles key presses
 document.addEventListener('keypress', function(e){
-    if (e.key == "w") {
-        movePlayer("up");
-    } else if (e.key == "d") {
-        movePlayer("right");
-    } else if (e.key == "s") {
-        movePlayer("down");
-    } else if (e.key == "a") {
-        movePlayer("left");
-    } else if (e.key == "w" && e.key == "a") {
-        movePlayer("upper-left");
-        console.log("yes11");
-    } else {
-        console.log("yes");
+    switch(e.key) {
+        case "w":
+            movePlayer("up");
+        case "d":
+            movePlayer("right");
+        case "s":
+            movePlayer("down");
+        case "a":
+            movePlayer("left");
+        default:
+            console.log(e.key)
     }
 });
 draw();
